@@ -29,8 +29,11 @@
 > 📨Aproveite o código e suas anotações, para entrar em contato, mande um email para ***leandrocs1500@gmail.com***.📨
 
 > ### Vale destaquer os arquivos no formato Jupyter Notebook, são encontrado de três formas: `.html`,`.pdf`e `.py`. Para facilitar a leitura dos arquivos, cabe ao leitor escolher qual forma irá vizualizar.
+### Vale destaquer os arquivos no formato Jupyter Notebook, são encontrado de três formas: `.html`, `.pdf` e `.py`. Para facilitar a leitura dos arquivos, cabe ao leitor escolher qual forma irá vizualizar.
 
 > ### Os comentários dos código são encontrados em *inglês*, para aderir o padrão do mercado.
 
 > ### O curso é oferecido pelo canal Hashtag Programação, no YouTube, que pode ser encontrado no link: [Hashtag Programação](https://www.youtube.com/channel/UCafFexaRoRylOKdzGBU6Pgg)
 
+
+### O curso é oferecido pelo canal Hashtag Programação, no YouTube, que pode ser encontrado no link: [Hashtag Programação](https://www.youtube.com/channel/UCafFexaRoRylOKdzGBU6Pgg)
