@@ -27,7 +27,6 @@
      * 🌐Suporte para uso na mesma rede, porém com aplicação redes externas, bastando apenas configurar o servidor.🌐
 
 > ### Vale destaquer os arquivos no formato Jupyter Notebook, são encontrado de três formas: `.html`,`.pdf`e `.py`. Para facilitar a leitura dos arquivos, cabe ao leitor escolher qual forma irá vizualizar.
-### Vale destaquer os arquivos no formato Jupyter Notebook, são encontrado de três formas: `.html`, `.pdf` e `.py`. Para facilitar a leitura dos arquivos, cabe ao leitor escolher qual forma irá vizualizar.
 
 > ### Os comentários dos código são encontrados em *inglês*, para aderir o padrão do mercado.
 
