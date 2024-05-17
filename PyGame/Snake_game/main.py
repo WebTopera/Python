@@ -16,11 +16,11 @@ class Game():
           self.Apple.draw()
 
      def background(self):
-          bg = pygame.image.load('Snake_game/resources/background.jpg')
+          bg = pygame.image.load('resources/background.jpg')
           self.surface.blit(bg, (0, 0))
 
      def play_bg_music(self):
-          pygame.mixer.music.load('Snake_game/resources/BG_music.wav')
+          pygame.mixer.music.load('resources/BG_music.wav')
           pygame.mixer.music.play(loops=1000)
 
      def is_collision(self, x1,y1,x2,y2):
@@ -36,7 +36,7 @@ class Game():
           pygame.display.flip()
           # Snake colliding with apple
           if self.is_collision(self.Snake.block_x[0], self.Snake.block_y[0], self.Apple.block_x, self.Apple.block_y):
-               sound = pygame.mixer.Sound('Snake_game/resources/ding.mp3')
+               sound = pygame.mixer.Sound('resources/ding.mp3')
                pygame.mixer.Sound.play(sound)
                self.Snake.incresse_lenght()
                self.Apple.move()
@@ -44,12 +44,12 @@ class Game():
           # Snake colliding with itself
           for i in range(3, self.Snake.length):
                if self.is_collision(self.Snake.block_x[0], self.Snake.block_y[0], self.Snake.block_x[i], self.Snake.block_y[i]):
-                    sound = pygame.mixer.Sound('Snake_game/resources/crash.mp3')
+                    sound = pygame.mixer.Sound('resources/crash.mp3')
                     pygame.mixer.Sound.play(sound)
                     raise "Game Over"
           # Snake colliding with the boundries of the window
           if not((0 <= self.Snake.block_x[0] <= 1000) and (0 <= self.Snake.block_y[0] <= 760)):
-               sound = pygame.mixer.Sound('Snake_game/resources/crash.mp3')
+               sound = pygame.mixer.Sound('resources/crash.mp3')
                pygame.mixer.Sound.play(sound)
                raise "Game Over"
           
@@ -102,14 +102,14 @@ class Game():
                except Exception as e:
                     self.show_game_over()
 
-               time.sleep(0.1999)
+               time.sleep(0.1)
           pygame.quit()
 
 class Snake():
      def __init__(self, parent_screen, lenght):
           self.length = lenght
           self.parent_screen = parent_screen
-          self.block = pygame.image.load('Snake_game/resources/head/head_right.png').convert_alpha()
+          self.block = pygame.image.load('resources/head/head_right.png').convert_alpha()
           self.block_x, self.block_y = [SIZE]*lenght, [SIZE]*lenght
           self.direction = 'right'
           self.rotate = 0
@@ -117,12 +117,37 @@ class Snake():
      def draw(self):
           for i in range(self.length):
                if i == 0:
-                    self.block = pygame.image.load(f'Snake_game/resources/head/head_{self.direction}.png').convert_alpha()
+                    self.block = pygame.image.load(f'resources/head/head_{self.direction}.png').convert_alpha()
                elif i == self.length-1:
-                    self.block = pygame.image.load(f'Snake_game/resources/tail/tail_{self.direction}.png').convert_alpha()
+                    if self.block_x[i-1] == self.block_x[i]:
+                         self.block = pygame.image.load(f'resources/tail/tail_{self.direction}.png').convert_alpha()
+                    elif self.block_x[i-1] > self.block_x[i]:
+                         self.block = pygame.image.load(f'resources/tail/tail_right.png').convert_alpha()
+                    elif self.block_x[i-1] < self.block_x[i]:
+                         self.block = pygame.image.load(f'resources/tail/tail_left.png').convert_alpha()
+
+                    if self.block_y[i-1] == self.block_y[i]:
+                         self.block = pygame.image.load(f'resources/tail/tail_{self.direction}.png').convert_alpha()
+                    elif self.block_y[i-1] > self.block_y[i]:
+                         self.block = pygame.image.load(f'resources/tail/tail_down.png').convert_alpha()
+                    elif self.block_y[i-1] < self.block_y[i]:
+                         self.block = pygame.image.load(f'resources/tail/tail_up.png').convert_alpha()
+               # I need to correct this, i need to put body_turn_side
                else:
-                    self.block = pygame.image.load(f'Snake_game/resources/body/body_{self.direction}.png').convert_alpha()
-               self.block = pygame.transform.rotate(self.block, self.rotate)
+                    if self.block_x[i-1] == self.block_x[i]:
+                         self.block = pygame.image.load(f'resources/body/body_{self.direction}.png').convert_alpha()
+                    elif self.block_x[i-1] > self.block_x[i]:
+                         self.block = pygame.image.load(f'resources/body/body_right.png').convert_alpha()
+                    elif self.block_x[i-1] < self.block_x[i]:
+                         self.block = pygame.image.load(f'resources/body/body_left.png').convert_alpha()
+
+                    if self.block_y[i-1] == self.block_y[i]:
+                         self.block = pygame.image.load(f'resources/body/body_{self.direction}.png').convert_alpha()
+                    elif self.block_y[i-1] > self.block_y[i]:
+                         self.block = pygame.image.load(f'resources/body/body_down.png').convert_alpha()
+                    elif self.block_y[i-1] < self.block_y[i]:
+                         self.block = pygame.image.load(f'resources/body/body_up.png').convert_alpha()
+
                self.parent_screen.blit(self.block, (self.block_x[i], self.block_y[i]))
           pygame.display.update()
 
@@ -178,7 +203,7 @@ class Snake():
 class Apple():
      def __init__(self, parent_screen):
           self.parent_screen = parent_screen
-          self.block = pygame.image.load('Snake_game/resources/apple.jpg').convert()
+          self.block = pygame.image.load('resources/apple.jpg').convert()
           self.move()
      def draw(self):
           self.parent_screen.blit(self.block, (self.block_x, self.block_y))
@@ -191,7 +216,3 @@ if __name__ == "__main__":
      game = Game()
      game.play_bg_music()
      game.run()
-
-     
-               
-               
